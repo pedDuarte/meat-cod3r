@@ -1,4 +1,6 @@
 # Meat - Angular App Starter
+Esse projeto foi desenvolvido a partir do curso: 'Construindo Aplicações Web Com o Novo Angular 4' da COD3R
+Link do curso: https://www.udemy.com/angular-pt/
 
 ## 1. Passos para começar
 
