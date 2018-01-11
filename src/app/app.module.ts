@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
+import { ApplicationErrorHandler } from './app.error-handler';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,9 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
 
 import { OrderSumaryComponent } from './order-sumary/order-sumary.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './security/login/login.component';
+import { UserDetailComponent } from './header/user-detail/user-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +41,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReviewsComponent,
     OrderSumaryComponent,
     NotFoundComponent,
+    LoginComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'},
+              {provide: ErrorHandler, useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
